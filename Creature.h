@@ -32,11 +32,6 @@ class Creature
                 //creature breed small creature
                 virtual void breed(Creature *[20][35], int, int) = 0;
 
-                //set creature bred or not
-                virtual void setIsBred(bool);
-
-                virtual void getIsBred();
-
                 //creature move
                 virtual void move(Creature *[20][35], int, int) = 0;
 
@@ -44,10 +39,13 @@ class Creature
                 virtual void act(Creature *[20][35], int, int) = 0;
 
                 //creature is Acted
-                void setIsActed(bool);
+                virtual void setIsActed(bool);
 
                 //get isActed
-                bool getIsActed();
+                virtual bool getIsActed();
+
+                //creature death or not
+                virtual bool die();
 
                 int getRandomNumber();
 
@@ -59,7 +57,6 @@ class Creature
                 char sign;
 
                 bool is_acted;
-                bool is_bred;
                 RandomNum rand;
 
 };
