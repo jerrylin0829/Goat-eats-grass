@@ -16,11 +16,8 @@ class Grass : public Creature
                 //destructor
                 ~Grass();
 
-                //Grass is dead or not
-                bool die();
-
                 //Grass breed small grass
-                void breed();
+                void breed(Creature *[20][35], int, int);
 
         private:
 
