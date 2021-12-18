@@ -8,7 +8,7 @@ Creature::Creature(char s)
 {
         age = 0;
         sign = s;
-        is_act = false;
+        is_acted = false;
 }
 
 Creature::~Creature()
