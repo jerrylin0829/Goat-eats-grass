@@ -5,6 +5,8 @@ const int Length = 20;
 const int Width = 35;
 const int startGoats = 5;
 const int startGrass = 10;
+const int goatMaxAge = 70;
+const int grassMaxAge = 6;
 
 using namespace std;
 
@@ -50,34 +52,21 @@ World::startNewPass()
         for(int i = 0; i < Length; ++i){
                 for(int j = 0; j < Width; ++j){
                         cell[i][j]->setIsActed(false);
+                        cout << "a" << endl;
                 }
         }
 }
 
-/*void
-World::act()
-{
-        for(int i = 0; i < Length; ++i){
-                for(int j = 0; j < Width; ++j){
-                        int new_i = i + random.getRandomNum(0,3);
-                        int new_j = j + random.getRandomNum(0,3);
-                        if(cell[i][j]->die())
-                                delete cell[i][j];
-                        else{
-                                if(cell[i][j]->getSign() = 'X' && cell[i][j]->breed()){
-                                        if(
-                                }
-                        }
-                }
-        }
-
-}*/
 void
 World::pass()
 {
         for(int i = 0; i < Length; ++i){
                 for(int j = 0; j < Width; ++j){
-
+                        if(cell[i][j]->die())
+                                delete cell[i][j];
+                        else{
+                                cell[i][j]->act(cell, i, j);
+                        }
                 }
         }
 }
@@ -89,8 +78,10 @@ World::mainLoop(int displayInterval)
         {
                 if(i % displayInterval == 0)
                         print();
+                cout << "gg" << endl;
                 startNewPass();
-
+                cout << "gg" << endl;
+                pass();
         }
 }
 
