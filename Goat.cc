@@ -33,7 +33,6 @@ Goat::breed(Creature *cell[20][35], int y, int x)
 
                 cell[new_y][new_x] = new Goat();
         }
-        cell[new_y][new_x]->setIsBred(true);
 }
 
 void
