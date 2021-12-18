@@ -25,7 +25,7 @@ class Goat : public Creature
                 void move(Creature *[20][35], int, int);
 
                 //creature pass one time
-                void act(Creature *[20][35], int, int) = 0;
+                void act(Creature *[20][35], int, int);
 
                 //creature is Acted
                 void setIsActed(bool);
