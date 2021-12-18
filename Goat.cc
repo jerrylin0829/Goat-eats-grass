@@ -1,88 +1,44 @@
+#ifndef _GOAT_H
+#define _GOAT_H
 #include <bits/stdc++.h>
-#include "Goat.h"
 #include "Creature.h"
+
 using namespace std;
 
-const int goatMaxAge = 70;
-
-//Constructor
-Goat::Goat() : Creature('X')
+class Goat : public Creature
 {
-        foodPoints = 20;
-        is_acted = false;
-}
+        public:
 
-//Destructor
-Goat::~Goat()
-{
+                //Constructor
+                Goat();
 
-}
+                //Destructor
+                ~Goat();
 
-void
-Goat::breed(Creature *cell[20][35], int y, int x)
-{
-        int num = Creature::getRandomNumber();
-        int new_y = y + dy[num];
-        int new_x = x + dx[num];
-        if(cell[new_y][new_x]->getSign() != 'X'){
+                //get Goat's food points;
+                int getFoodPoints();
 
-                if(cell[new_y][new_x]->getSign() == 'I'){
-                        cell[y][x]->foodPoints+=5;
-                        delete cell[new_y][new_x];
-                }
+                //Goat breed small goat
+                void breed(Creature *[20][35], int, int);
 
-                cell[new_y][new_x] = new Goat();
-        }
-}
+                //Goat move
+                void move(Creature *[20][35], int, int);
 
-void
-Goat::move(Creature *cell[20][35], int y, int x)
-{
-        int num = Creature::getRandomNumber();
-        int new_y = y + dy[num];
-        int new_x = x + dx[num];
+                //creature pass one time
+                void act(Creature *[20][35], int, int);
 
-        if(cell[new_y][new_x]->getSign() != 'X'){
+                //creature is Acted
+                void setIsActed(bool);
 
-                if(cell[new_y][new_x]->getSign() == 'I'){
-                        cell[new_y][new_x] == cell[y][x];
-                        cell[new_y][new_x]->foodPoints+=5;
-                }
-                else if(cell[new_y][new_x] == NULL){
-                        cell[new_y][new_x] == cell[y][x];
-                }
+                //get isActed
+                bool getIsActed();
 
-                delete cell[y][x];
-        }
-}
-void
-Goat::act(Creature *cell[20][35], int y, int x)
-{
-        cell[y][x]->Creature::increaseAge();
-        cell[y][x]->foodPoints--;
-        if(cell[y][x]->getAge() >= 55 && cell[y][x]->getAge() <= 60){
-                cell[y][x]->breed();
-                cell[y][x]->setIsBred(true);
-        }else{
-                cell[y][x]->move();
-        }
-        cell[y][x]->setIsActed();
-}
+                bool die();
 
-void
-Goat::setIsActed(bool _is_act)
-{
-        is_acted = _is_act;
-}
+        private:
 
-bool
-Goat::getIsActed()
-{
-        return is_acted;
-}
+                int foodPoints;
 
-bool
-Goat::die()
-{
-  return Creature::getAge() > goatMaxAge || foodPoints == 0;
-}
+                bool is_acted;
+
+};
