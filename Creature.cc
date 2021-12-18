@@ -37,22 +37,9 @@ Creature::increaseAge()
 void
 Creature::act(Creature *cell[20][35], int y, int x)
 {
-        cell[y][x]->increaseAge();
-        if(cell[y][x]->getAge() > 55 && cell[y][x]->getAge() < 60){
 
-        }
-}
-void
-Creature::setIsBred(bool _is_bred)
-{
-        is_bred = _is_bred;
 }
 
-bool
-Creature::getIsBred()
-{
-        return is_bred;
-}
 void
 Creature::setIsActed(bool _is_act)
 {
@@ -63,6 +50,12 @@ bool
 Creature::getIsActed()
 {
         return is_acted;
+}
+
+bool
+Creature::die()
+{
+        return true;
 }
 
 int
