@@ -5,8 +5,6 @@ const int Length = 20;
 const int Width = 35;
 const int startGoats = 5;
 const int startGrass = 10;
-const int goatMaxAge = 70;
-const int grassMaxAge = 6;
 
 using namespace std;
 
@@ -63,6 +61,8 @@ World::pass()
         for(int i = 0; i < Length; ++i){
                 for(int j = 0; j < Width; ++j){
 
+                        if(cell[i][j]->getSign() == 'X')
+                                cout << cell[i][j]->getAge() << endl;
                         if(cell[i][j]!=NULL){
                                 //cell[i][j]->act(cell, i, j);
                                 //cout << cell[i][j]->getAge() << endl;
@@ -89,7 +89,7 @@ World::mainLoop(int displayInterval)
                 startNewPass();
 
                 if(i % displayInterval == 0)
-                        print();
+                        //print();
 
                 pass();
                 //cout << "gg " << i << endl;
