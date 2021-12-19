@@ -68,14 +68,14 @@ World::pass()
                                 //cout << cell[i][j]->getAge() << endl;
 
                                 if(cell[i][j]->die()){
-                                        cout << "true die" << endl;
+                                        //cout << "true die" << endl;
                                         delete cell[i][j];
                                 }
                                 else{
-                                        cout << "don't die" << endl;
+                                        //cout << "don't die" << endl;
                                         cell[i][j]->act(cell, i, j);
                                 }
-                                cout << "debug" << endl;
+                                //cout << "debug" << endl;
                         }
                 }
         }
@@ -89,8 +89,9 @@ World::mainLoop(int displayInterval)
                 if(i % displayInterval == 0)
                         print();
                 pass();
-                cout << "gg2" << endl;
+                //cout << "gg " << i << endl;
                 startNewPass();
+                print();
         }
 }
 
