@@ -34,30 +34,6 @@ Creature::increaseAge()
         ++age;
 }
 
-void
-Creature::act(Creature *cell[20][35], int y, int x)
-{
-
-}
-
-void
-Creature::setIsActed(bool _is_act)
-{
-        is_acted = _is_act;
-}
-
-bool
-Creature::getIsActed()
-{
-        return is_acted;
-}
-
-bool
-Creature::die()
-{
-        return true;
-}
-
 int
 Creature::getRandomNumber()
 {
