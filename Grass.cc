@@ -22,14 +22,15 @@ Grass::breed(Creature *cell[20][35], int y, int x)
         int num = Creature::getRandomNumber();
         int new_y = y + dy[num];
         int new_x = x + dx[num];
-
         if((new_y < 0 || new_y >= 20) || (new_x < 0 || new_x >= 35)){
-                cout << " grass exceed bound" << endl;
+                //cout << " grass exceed bound" << endl;
                 return;
         }
 
-        if(cell[new_y][new_x]->getSign() == NULL){
+        if(cell[new_y][new_x] == NULL){
+                //cout << "can breed grass?" << endl;
                 cell[new_y][new_x] = new Grass();
+                //cout << "Yes" << endl;
         }
 
 }
@@ -42,7 +43,7 @@ Grass::act(Creature *cell[20][35],int y, int x)
 
         cell[y][x]->Creature::increaseAge();
         cell[y][x]->setIsActed(true);
-
+        //cout << "grass:"<< age <<endl;
         if(cell[y][x]->getAge() >= 3 && cell[y][x]->getAge() <= 5){
                 cell[y][x]->breed(cell, y, x);
         }
