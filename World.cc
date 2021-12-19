@@ -62,11 +62,20 @@ World::pass()
 {
         for(int i = 0; i < Length; ++i){
                 for(int j = 0; j < Width; ++j){
-                        if(cell[i][j]->die())
-                                delete cell[i][j];
-                        else{
+
+                        if(cell[i][j]!=NULL)
                                 cell[i][j]->act(cell, i, j);
-                        }
+                        //      cout << cell[i][j]->getAge() << endl;
+
+                        /*if(cell[i][j]->die()){
+                          cout << "true die" << endl;
+                          delete cell[i][j];
+                          }
+                          else{
+                          cout << "don't die" << endl;
+                          cell[i][j]->act(cell, i, j);
+                          }
+                          cout << "debug" << endl;*/
                 }
         }
 }
@@ -78,10 +87,9 @@ World::mainLoop(int displayInterval)
         {
                 if(i % displayInterval == 0)
                         print();
-                cout << "gg" << endl;
-                startNewPass();
-                cout << "gg" << endl;
                 pass();
+                cout << "gg2" << endl;
+                startNewPass();
         }
 }
 
