@@ -51,8 +51,8 @@ World::startNewPass()
 {
         for(int i = 0; i < Length; ++i){
                 for(int j = 0; j < Width; ++j){
-                        cell[i][j]->setIsActed(false);
-                        cout << "a" << endl;
+                        if(cell[i][j]!=NULL)
+                                cell[i][j]->setIsActed(false);
                 }
         }
 }
@@ -63,19 +63,20 @@ World::pass()
         for(int i = 0; i < Length; ++i){
                 for(int j = 0; j < Width; ++j){
 
-                        if(cell[i][j]!=NULL)
-                                cell[i][j]->act(cell, i, j);
-                        //      cout << cell[i][j]->getAge() << endl;
+                        if(cell[i][j]!=NULL){
+                                //cell[i][j]->act(cell, i, j);
+                                //cout << cell[i][j]->getAge() << endl;
 
-                        /*if(cell[i][j]->die()){
-                          cout << "true die" << endl;
-                          delete cell[i][j];
-                          }
-                          else{
-                          cout << "don't die" << endl;
-                          cell[i][j]->act(cell, i, j);
-                          }
-                          cout << "debug" << endl;*/
+                                if(cell[i][j]->die()){
+                                        cout << "true die" << endl;
+                                        delete cell[i][j];
+                                }
+                                else{
+                                        cout << "don't die" << endl;
+                                        cell[i][j]->act(cell, i, j);
+                                }
+                                cout << "debug" << endl;
+                        }
                 }
         }
 }
