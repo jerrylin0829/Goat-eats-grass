@@ -42,18 +42,15 @@ Goat::move(Creature *cell[20][35], int y, int x)
         int new_y = y + dy[num];
         int new_x = x + dx[num];
 
-        if(cell[new_y][new_x]->getSign() != 'X'){
-
-                if(cell[new_y][new_x]->getSign() == 'I'){
-                        cell[new_y][new_x] = cell[y][x];
-                        foodPoints+=5;
-                }
-                else if(cell[new_y][new_x] == NULL){
-                        cell[new_y][new_x] = cell[y][x];
-                }
-
-                delete cell[y][x];
+        if(cell[new_y][new_x] == NULL){
+                cell[new_y][new_x] = cell[y][x];
         }
+        else if(cell[new_y][new_x]->getSign() == 'I'){
+                cell[new_y][new_x] = cell[y][x];
+                foodPoints+=5;
+        }
+
+        cell[y][x] = NULL;
 }
 void
 Goat::act(Creature *cell[20][35], int y, int x)
@@ -62,13 +59,14 @@ Goat::act(Creature *cell[20][35], int y, int x)
                 return;
 
         cell[y][x]->Creature::increaseAge();
+        cell[y][x]->setIsActed(true);
         foodPoints--;
+
         if(cell[y][x]-> Creature::getAge() >= 55 && cell[y][x]-> Creature::getAge() <= 60){
                 cell[y][x]->breed(cell, y, x);
         }else{
                 cell[y][x]->move(cell, y, x);
         }
-        cell[y][x]->setIsActed(true);
 }
 
 void
@@ -86,6 +84,5 @@ Goat::getIsActed()
 bool
 Goat::die()
 {
-        cout <<"goatdie" << flush;
   return Creature::getAge() > goatMaxAge || foodPoints == 0;
 }
