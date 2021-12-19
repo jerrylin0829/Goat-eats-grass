@@ -69,7 +69,7 @@ World::pass()
 
                                 if(cell[i][j]->die()){
                                         //cout << "true die" << endl;
-                                        delete cell[i][j];
+                                        delete[] cell[i][j];
                                 }
                                 else{
                                         //cout << "don't die" << endl;
@@ -86,12 +86,14 @@ World::mainLoop(int displayInterval)
 {
         for(int i = 0; i < numPasses; ++i)
         {
+                startNewPass();
+
                 if(i % displayInterval == 0)
                         print();
+
                 pass();
                 //cout << "gg " << i << endl;
-                startNewPass();
-                print();
+                //print();
         }
 }
 
